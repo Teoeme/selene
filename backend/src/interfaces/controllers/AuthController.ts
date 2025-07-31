@@ -3,6 +3,7 @@ import { LoginSchema } from "../schemas/LoginSchemas";
 import { ResponseFactory } from "../responses/ResponseFactory";
 import { LoginUseCase } from "../../application/use-cases/LoginUseCase";
 import { Container } from "../../infrastructure/di/container";
+import { AuthenticatedRequest } from "../middleware/AuthMiddleware";
 
 export class AuthController {
     private readonly loginUseCase: LoginUseCase;
@@ -26,6 +27,13 @@ export class AuthController {
             const { email, password } = validation.data;
 
             const result = await this.loginUseCase.execute({ email, password });
+            //enviar token por cookie
+            res.cookie('auth-token',result.token,{
+                httpOnly: false,
+                secure: process.env.NODE_ENV === 'production',
+                sameSite: 'strict',
+                maxAge:7*24*60*60*1000,
+            })
             return ResponseFactory.success(res, 'Login successful', result);
             
         } catch (error) {
@@ -41,6 +49,12 @@ export class AuthController {
 
     logout = async (req: Request, res: Response) => {
         return ResponseFactory.success(res, 'Logout successful');
+    }
+
+    me = async (req: Request, res: Response) => {
+        const authReq = req as AuthenticatedRequest;
+        const user = authReq.user;
+        return ResponseFactory.success(res, 'Me successful', user);
     }
 
 

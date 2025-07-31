@@ -9,6 +9,7 @@ interface LoginUseCaseInput {
 
 interface LoginUseCaseOutput {
     token: string;
+    expiresIn: string;
 }
 
 export class LoginUseCase {
@@ -48,6 +49,6 @@ export class LoginUseCase {
 
         const token = await this.jwtService.generateToken(user.getId());
         
-        return { token };
+        return { token: token.token, expiresIn: token.expiresIn };
     }
 }

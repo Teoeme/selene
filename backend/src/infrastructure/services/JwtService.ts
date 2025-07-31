@@ -4,14 +4,14 @@ import { StringValue } from "ms";
 import { config } from '../../config/env';
 
 export class JwtServiceImpl implements JwtService {
-    async generateToken(userId: string): Promise<string> {
+    async generateToken(userId: string): Promise<{token:string,expiresIn:string}> {
         const payload = { userId };
         const options: SignOptions = {
             expiresIn: config.jwt.expiresIn as StringValue
         };
 
         const token = jwt.sign(payload, config.jwt.secret, options);
-        return token;
+        return {token,expiresIn:options.expiresIn as string};
     }
 
     async verifyToken(token: string): Promise<{ userId: string }> {

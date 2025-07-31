@@ -91,7 +91,7 @@ class DatabaseSeeder {
                 'selene-employee',
                 'employee@selene.com',
                 'Empleado de Selene',
-                'admin123',
+                'employee123',
                 UserRole.EMPLOYEE,
                 companies[0],
                 new Date(),
