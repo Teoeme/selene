@@ -1,12 +1,14 @@
 import { UserRole } from '../value-objects/UserRole';
+import { Company } from './Company';
 
 export class User {
   constructor(
     private readonly id: string,
     private readonly email: string,
     private readonly name: string,
+    private readonly password: string, 
     private readonly role: UserRole,
-    private readonly company: string,
+    private readonly company: Company,
     private readonly createdAt: Date,
     private readonly updatedAt: Date
   ) {}
@@ -23,11 +25,15 @@ export class User {
     return this.name;
   }
 
+  public getPassword(): string {
+    return this.password;
+  }
+
   public getRole(): UserRole {
     return this.role;
   }
 
-  public getCompany(): string {
+  public getCompany(): Company {
     return this.company;
   }
 
@@ -47,7 +53,7 @@ export class User {
     return this.role === UserRole.EMPLOYEE;
   }
 
-  public belongsToCompany(company: string): boolean {
-    return this.company === company;
+  public belongsToCompany(company: Company): boolean {
+    return this.company.getId() === company.getId();
   }
 } 

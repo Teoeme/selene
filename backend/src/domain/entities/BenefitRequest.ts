@@ -1,6 +1,7 @@
 import { RequestStatus } from '../value-objects/RequestStatus';
 import { User } from './User';
 import { Benefit } from './Benefit';
+import { Company } from './Company';
 
 export class BenefitRequest {
   constructor(
@@ -11,7 +12,7 @@ export class BenefitRequest {
     private readonly requestDate: Date,
     private resolutionDate: Date | null,
     private readonly employee: User,
-    private readonly company: string,
+    private readonly company: Company,
     private readonly createdAt: Date,
     private readonly updatedAt: Date
   ) {}
@@ -44,7 +45,7 @@ export class BenefitRequest {
     return this.employee;
   }
 
-  public getCompany(): string {
+  public getCompany(): Company {
     return this.company;
   }
 

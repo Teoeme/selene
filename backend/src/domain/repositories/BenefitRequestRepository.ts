@@ -1,10 +1,15 @@
 import { BenefitRequest } from '../entities/BenefitRequest';
 import { RequestStatus } from '../value-objects/RequestStatus';
+import { Repository } from './Repository';
 
-export interface BenefitRequestRepository {
-  findById(id: string): Promise<BenefitRequest | null>;
-  findByEmployee(employeeId: string): Promise<BenefitRequest[]>;
-  findByCompany(company: string): Promise<BenefitRequest[]>;
-  findByStatus(status: RequestStatus): Promise<BenefitRequest[]>;
-  save(request: BenefitRequest): Promise<void>;
+export interface BenefitRequestQuery {
+  employeeId?: string;
+  status?: RequestStatus;
+  companyId?: string;
+  startDate?: Date;
+  endDate?: Date;
+}
+
+export interface BenefitRequestRepository extends Repository<BenefitRequest> {
+  find(query?: BenefitRequestQuery): Promise<BenefitRequest[]>;
 } 

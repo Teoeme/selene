@@ -1,4 +1,5 @@
 import { BenefitType } from '../value-objects/BenefitType';
+import { Company } from './Company';
 
 export class Benefit {
   constructor(
@@ -7,7 +8,7 @@ export class Benefit {
     private readonly description: string,
     private readonly type: BenefitType,
     private readonly isActive: boolean,
-    private readonly company: string,
+    private readonly company: Company,
     private readonly createdAt: Date,
     private readonly updatedAt: Date
   ) {}
@@ -32,7 +33,7 @@ export class Benefit {
     return this.isActive;
   }
 
-  public getCompany(): string {
+  public getCompany(): Company {
     return this.company;
   }
 

@@ -1,7 +1,6 @@
 import { User } from '../entities/User';
+import { Repository } from './Repository';
 
-export interface UserRepository {
-  findById(id: string): Promise<User | null>;
+export interface UserRepository extends Repository<User> {
   findByEmail(email: string): Promise<User | null>;
-  save(user: User): Promise<void>;
 } 
