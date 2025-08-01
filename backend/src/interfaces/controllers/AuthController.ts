@@ -27,13 +27,7 @@ export class AuthController {
             const { email, password } = validation.data;
 
             const result = await this.loginUseCase.execute({ email, password });
-            //enviar token por cookie
-            res.cookie('auth-token',result.token,{
-                httpOnly: false,
-                secure: false,
-                sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-                maxAge:7*24*60*60*1000,
-            })
+       
             return ResponseFactory.success(res, 'Login successful', result);
             
         } catch (error) {

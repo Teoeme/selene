@@ -1,6 +1,7 @@
 import { apiClient } from '@/core/api/client';
 import { API_ENDPOINTS } from '@/shared/constants';
 import type { LoginRequest, LoginResponse, User } from '@/core/types';
+import { setAuthToken } from '@/core/auth/cookies';
 
 
 export const authService = { //hace uso del api client para hacer las peticiones de auth
@@ -14,12 +15,15 @@ export const authService = { //hace uso del api client para hacer las peticiones
       throw new AuthError(response.message || 'Error en el login');
     }
 
+    const token = response.data!.token;
+    setAuthToken(token);
+
     //Obtener datos del usuario
     const user = await this.getCurrentUser();
     
     return {
       user,
-      token: response.data!.token
+      token
     };
   },
 
