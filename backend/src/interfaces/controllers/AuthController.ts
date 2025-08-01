@@ -31,7 +31,7 @@ export class AuthController {
             res.cookie('auth-token',result.token,{
                 httpOnly: false,
                 secure: process.env.NODE_ENV === 'production',
-                // sameSite: 'strict',
+                sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
                 domain: process.env.NODE_ENV === 'production' ? process.env.FRONTEND_URL?.replace('http://','').replace('https://','') : 'localhost',
                 maxAge:7*24*60*60*1000,
             })
