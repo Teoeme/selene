@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import type { ApiResponse } from '@/core/types';
 import { getAuthToken, clearAuthData } from '@/core/auth/cookies';
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:3010/api/v1';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3010/api/v1';
 
 class ApiClient {
   private client: AxiosInstance;
