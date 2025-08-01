@@ -16,6 +16,12 @@ Aplicación web de **Gestión de Beneficios Empresariales** desarrollada con el 
 
 El sistema permite a empleados solicitar beneficios corporativos y a administradores gestionarlos, con soporte multi-tenant para múltiples empresas.
 
+## Despliegue
+
+Para hacer un despliegue completo de esta aplicación por favor siga las instrucciones descriptas en [despliegue.](./docs/despliegue.md)
+
+**También puede revisar la [DEMO online.](https://selene-dve3.onrender.com/)**
+
 ## Arquitectura
 
 **Arquitectura Hexagonal (Ports & Adapters)** dividida en capas:
