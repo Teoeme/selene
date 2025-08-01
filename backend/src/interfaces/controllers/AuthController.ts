@@ -31,7 +31,8 @@ export class AuthController {
             res.cookie('auth-token',result.token,{
                 httpOnly: false,
                 secure: process.env.NODE_ENV === 'production',
-                sameSite: 'strict',
+                // sameSite: 'strict',
+                domain: process.env.NODE_ENV === 'production' ? process.env.FRONTEND_URL : 'localhost',
                 maxAge:7*24*60*60*1000,
             })
             return ResponseFactory.success(res, 'Login successful', result);
