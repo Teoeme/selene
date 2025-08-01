@@ -27,7 +27,6 @@ export class AuthMiddleware {
   authenticate = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const token= req.headers.authorization?.replace('Bearer ', '');
-      console.log('token', token);
       if(!token) {
         return ResponseFactory.unauthorized(res, 'Authentication required.');
       }

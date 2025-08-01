@@ -12,8 +12,8 @@ export const CreateBenefitRequestSchema = z.object({
 export const ListBenefitRequestsQuerySchema = z.object({
   status: z.enum(['pending', 'approved', 'rejected']).optional(),
   employeeId: z.string().uuid().optional(),
-  startDate: z.string().datetime().optional(),
-  endDate: z.string().datetime().optional()
+  startDate: z.iso.date().optional(),
+  endDate: z.iso.date().optional()
 });
 
 export const BenefitRequestParamsSchema = z.object({

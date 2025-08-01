@@ -16,9 +16,6 @@ export const API_ENDPOINTS = {
   },
   BENEFITS: {
     LIST: '/benefits',
-    CREATE: '/benefits',
-    UPDATE: (id: string) => `/benefits/${id}`,
-    DELETE: (id: string) => `/benefits/${id}`,
   },
 } as const;
 
@@ -26,12 +23,6 @@ export const ROUTES = {
   HOME: '/',
   LOGIN: '/login',
   DASHBOARD: '/dashboard',
-  MY_REQUESTS: '/my-requests',
-  CREATE_REQUEST: '/create-request',
-  ADMIN: {
-    REQUESTS: '/admin/requests',
-    BENEFITS: '/admin/benefits',
-  },
 } as const;
 
 export const BENEFIT_TYPE_LABELS = {
@@ -66,23 +57,3 @@ export const QUERY_KEYS = {
   BENEFITS: ['benefits'],
   MY_REQUESTS: ['my-requests'],
 } as const;
-
-// === Features Status ===
-
-export const FEATURES_STATUS = {
-  AUTH: {
-    name: 'auth',
-    description: 'Feature de autenticación y autorización',
-    status: 'completed',
-  },
-  REQUESTS: {
-    name: 'requests',
-    description: 'Feature de gestión de solicitudes de beneficios',
-    status: 'pending',
-  },
-  BENEFITS: {
-    name: 'benefits',
-    description: 'Feature de gestión de catálogo de beneficios (admin)',
-    status: 'pending',
-  },
-} as const; 

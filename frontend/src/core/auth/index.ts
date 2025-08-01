@@ -10,10 +10,8 @@ export {
   isAuthenticated,
 } from './cookies';
 
-// Zustand store
 export { useAuthStore } from './store';
 
-// Hooks
 export { 
   useAuth, 
   useAuthUser, 

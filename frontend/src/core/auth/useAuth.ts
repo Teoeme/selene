@@ -1,7 +1,7 @@
 import { useAuthStore } from './store';
 import { useEffect } from 'react';
 
-export function useAuth() {
+export function useAuth() { //Hook para manejar el estado de autenticacion
   const store = useAuthStore();
   
   useEffect(() => {

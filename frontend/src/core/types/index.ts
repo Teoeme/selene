@@ -16,12 +16,21 @@ export interface User {
 
 export interface Benefit {
   id: string;
-  title: string;
+  name: string;
   description: string;
   type: BenefitType;
-  company: string;
+  company: Company;
   isActive: boolean;
   createdAt: Date;
+  updatedAt: Date;
+}
+
+interface Company {
+  id: string;
+  name: string;
+  description: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface BenefitRequest {

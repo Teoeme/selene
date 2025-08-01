@@ -172,6 +172,16 @@ class DatabaseSeeder {
                 new Date()
             ),
             new Benefit(
+                'benefit-coworking',
+                'Beneficio de coworking',
+                'Beneficio de coworking para los empleados de la empresa',
+                BenefitType.COWORKING,
+                true,
+                companies[0],
+                new Date(),
+                new Date()
+            ),
+            new Benefit(
                 'benefit-curse-2',
                 'Capacitación en Biogás y Biodigestores',
                 'Este curso te permite Iniciar desde Cero y Conseguir en solo un mes conocimientos en Biogás y Biodigestores',
@@ -186,6 +196,26 @@ class DatabaseSeeder {
                 'Licencia de software - Solidworks',
                 'Licencia de software para el uso de Solidworks',
                 BenefitType.LICENSE,
+                true,
+                companies[1],
+                new Date(),
+                new Date()
+            ),
+            new Benefit(
+                'benefit-meal-2',
+                'Asado para el equipo',
+                'Asado para el equipo de trabajo',
+                BenefitType.MEAL,
+                true,
+                companies[1],
+                new Date(),
+                new Date()
+            ),
+            new Benefit(
+                'benefit-course-2',
+                'Curso de mantenimiento preventivo de motores diesel',
+                'Curso de mantenimiento preventivo de motores diesel presencial',
+                BenefitType.COURSE,
                 true,
                 companies[1],
                 new Date(),
@@ -224,8 +254,8 @@ class DatabaseSeeder {
                 RequestStatus.PENDING,
                 new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 2),
                 null,
-                users[1],
-                users[1].getCompany(),
+                users[2],
+                users[2].getCompany(),
                 new Date(),
                 new Date()
             )

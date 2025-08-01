@@ -25,16 +25,13 @@ export function ProtectedRoute({
     );
   }
 
-  // Si requiere auth y no está autenticado → Login
   if (requireAuth && !isAuthenticated) {
     return <Navigate to={ROUTES.LOGIN} replace />;
   }
 
-  // Si no requiere auth y SÍ está autenticado → Dashboard
-  if (!requireAuth && isAuthenticated) {
+  if (!requireAuth && isAuthenticated) { //Ya se ha logueado y está en el login
     return <Navigate to={ROUTES.DASHBOARD} replace />;
   }
 
-  // Todo OK, mostrar contenido
   return <>{children}</>;
 } 

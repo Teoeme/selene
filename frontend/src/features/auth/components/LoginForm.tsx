@@ -58,10 +58,9 @@ export function LoginForm() {
       <div className="max-w-md w-full space-y-8">
    
         
-        {/* Form */}
         <form className="mt-8 space-y-6" onSubmit={handleSubmit} noValidate>
           <div className="space-y-4">
-            {/* Email Input */}
+            
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email
@@ -84,7 +83,6 @@ export function LoginForm() {
               )}
             </div>
 
-            {/* Password Input */}
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                 Contraseña
@@ -108,7 +106,7 @@ export function LoginForm() {
             </div>
           </div>
 
-          {/* Error de login */}
+
           {loginMutation.isError && (
             <div className="bg-red-50 border border-red-200 rounded-md p-3">
               <p className="text-sm text-red-600">
@@ -117,7 +115,8 @@ export function LoginForm() {
             </div>
           )}
 
-          {/* Submit Button */}
+
+
           <div>
             <Button
               type="submit"
@@ -131,7 +130,7 @@ export function LoginForm() {
             </Button>
           </div>
 
-          {/* Demo credentials */}
+          
           <div className="bg-blue-50 border border-blue-200 rounded-md p-3">
             <h4 className="text-sm font-medium text-blue-900 mb-2">Credenciales de prueba:</h4>
             <div className="text-xs text-blue-800 space-y-1">

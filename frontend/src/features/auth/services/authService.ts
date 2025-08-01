@@ -37,7 +37,6 @@ export const authService = { //hace uso del api client para hacer las peticiones
     try {
       await apiClient.post(API_ENDPOINTS.AUTH.LOGOUT);
     } catch (error) {
-      // Incluso si falla el logout en backend, limpiamos frontend
       console.warn('Error en logout del backend:', error);
     }
   },

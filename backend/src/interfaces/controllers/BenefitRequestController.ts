@@ -149,8 +149,8 @@ export class BenefitRequestController {
   listRequests = async (req: Request, res: Response) => {
     try {
       const authReq = req as AuthenticatedRequest;
-
       const validation = ListBenefitRequestsQuerySchema.safeParse(req.query);
+
       if (!validation.success) {
         return ResponseFactory.validationError(res, 'Invalid query parameters', validation.error);
       }
@@ -166,12 +166,13 @@ export class BenefitRequestController {
       }
 
       if (query.startDate) {
-        input.startDate = new Date(query.startDate);
+        input.startDate = new Date(query.startDate + 'T00:00:00');
       }
 
       if (query.endDate) {
-        input.endDate = new Date(query.endDate);
+        input.endDate = new Date(query.endDate + 'T23:59:59');
       }
+
 
       const result = await this.listBenefitRequestsUseCase.execute(input);
 

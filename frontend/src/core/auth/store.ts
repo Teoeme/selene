@@ -55,7 +55,6 @@ export const useAuthStore = create<AuthState>()(
       initializeAuth: () => {
         const token = getAuthToken();
         const userData = getAuthUser() as User | null;
-        
         if (token && userData) {
           set({
             user: userData,

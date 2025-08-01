@@ -2,19 +2,31 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ROUTES } from '@/shared/constants';
 import { ProtectedRoute } from '@/core/router/ProtectedRoute';
 import { LoginPage } from '@/features/auth/pages/LoginPage';
-import { Dashboard } from '@/pages/Dashboard';
+import { EmployeeDashboard } from '@/pages/EmployeeDashboard';
+import { useAuth } from '@/core/auth';
+import { AdminDashboard } from './pages/AdminDashboard';
+
+function DashboardRouter() {
+  const { user } = useAuth();
+  
+  if (user?.role === 'EMPLOYEE') {
+    return <EmployeeDashboard />;
+  }
+  if(user?.role === 'ADMIN') {
+    return <AdminDashboard />;
+  }
+}
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Ruta raíz - redirige según autenticación */}
-          <Route 
+        <Route 
           path="/" 
           element={<Navigate to={ROUTES.DASHBOARD} replace />} 
         />
-        
-        {/* Ruta de login - solo para no autenticados */}
+
+        {/* Login */}
         <Route 
           path={ROUTES.LOGIN} 
           element={
@@ -24,17 +36,17 @@ function App() {
           } 
         />
         
-        {/* Ruta principal - solo para autenticados */}
+        {/* Dashboard */}
         <Route 
           path={ROUTES.DASHBOARD} 
           element={
             <ProtectedRoute requireAuth={true}>
-              <Dashboard />
+              <DashboardRouter />
             </ProtectedRoute>
           } 
         />
-        
-        {/* Ruta 404 - redirige al dashboard */}
+
+        {/* 404 redireige al dashboard */}
         <Route 
           path="*" 
           element={<Navigate to={ROUTES.DASHBOARD} replace />} 

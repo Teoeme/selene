@@ -140,7 +140,6 @@ export class MongoBenefitRequestRepository implements BenefitRequestRepository {
           filter.requestDate.$lte = query.endDate;
         }
       }
-
       const documents = await BenefitRequestModel.find(filter)
         .populate('benefitId')
         .populate('employeeId')

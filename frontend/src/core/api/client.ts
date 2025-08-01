@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import type { ApiResponse } from '@/core/types';
 import { getAuthToken, clearAuthData } from '@/core/auth/cookies';
 
-const API_BASE_URL = 'http://localhost:3010/api/v1';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:3010/api/v1';
 
 class ApiClient {
   private client: AxiosInstance;
@@ -14,10 +14,10 @@ class ApiClient {
       headers: {
         'Content-Type': 'application/json',
       },
-      withCredentials: true, // Importante: permite envío de cookies
+      withCredentials: true,
     });
 
-    // Request interceptor para agregar token desde cookies
+    // Agregar token en todas las peticiones
     this.client.interceptors.request.use(
       (config) => {
         const token = getAuthToken();
@@ -29,7 +29,7 @@ class ApiClient {
       (error) => Promise.reject(error)
     );
 
-    // Response interceptor para manejo de errores
+    // Interceptar respuestas de error de autenticacion y borrar token
     this.client.interceptors.response.use(
       (response) => response,
       (error) => {
