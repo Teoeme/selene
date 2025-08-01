@@ -6,6 +6,7 @@ import { BenefitRequestRepository } from '../../domain/repositories/BenefitReque
 import { UserRepository } from '../../domain/repositories/UserRepository';
 import { RequestStatus } from '../../domain/value-objects/RequestStatus';
 import { Company } from '../../domain/entities/Company';
+import crypto from 'crypto';
 
 interface RequestBenefitUseCaseDependencies {
   benefitRepository: BenefitRepository;
