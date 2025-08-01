@@ -34,10 +34,14 @@ El sistema permite a empleados solicitar beneficios corporativos y a administrad
 - **Zod** (validación de schemas)
 - **Vitest** (testing)
 
-### Frontend *(En desarrollo)*
-- **React** + **TypeScript**
-- **Estado** por definir
-- **UI** por definir
+### Frontend 
+- **React** + **TypeScript** + **Vite**
+- **React Query** (estado del servidor)
+- **Zustand** (estado global)
+- **React Router** (navegación)
+- **Tailwind CSS** (estilos)
+- **Headless UI** (componentes accesibles)
+- **Axios** (cliente HTTP)
 
 ## Funcionalidades Principales
 
@@ -50,11 +54,13 @@ El sistema permite a empleados solicitar beneficios corporativos y a administrad
 - Login con JWT stateless
 - Roles: `ADMIN` y `EMPLOYEE`
 - Middleware de protección por endpoints
+- Manejo seguro de tokens con httpOnly cookies
 
 ### **Gestión de Beneficios**
 - **Empleados**: Solicitar beneficios disponibles
 - **Administradores**: Aprobar/rechazar solicitudes
 - Estados: `PENDING`, `APPROVED`, `REJECTED`
+- Filtros por estado y fechas (admin)
 
 ###  **Arquitectura Limpia**
 - Inyección de dependencias
@@ -73,7 +79,11 @@ selene/
 │   │   ├── infrastructure/   # MongoDB, JWT, bcrypt
 │   │   └── interfaces/       # Controllers, routes, middleware
 │   └── tests/         # Tests unitarios e integración
-├── frontend/          # App React (en desarrollo)
+├── frontend/          # App React con features completas
+│   ├── src/
+│   │   ├── core/            # Auth, API, router, types
+│   │   ├── features/        # auth, benefits, requests
+│   │   └── shared/          # Componentes reutilizables
 ├── docs/             # Documentación del proyecto
 └── README.md
 ```
