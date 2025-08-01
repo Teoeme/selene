@@ -30,7 +30,7 @@ export class AuthController {
             //enviar token por cookie
             res.cookie('auth-token',result.token,{
                 httpOnly: false,
-                secure: process.env.NODE_ENV === 'production',
+                secure: false,
                 sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
                 maxAge:7*24*60*60*1000,
             })
